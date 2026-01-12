@@ -1,40 +1,40 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from werkzeug.security import generate_password_hash  # Added for hashing
+from werkzeug.security import generate_password_hash
 
 app = Flask(__name__)
 app.secret_key = 'Clave'
 
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/user_registration'
+# DATABASE CONFIG FOR RAILWAY ONLY
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    f"mysql+pymysql://{os.environ['MYSQLUSER']}:"
+    f"{os.environ['MYSQLPASSWORD']}@"
+    f"{os.environ['MYSQLHOST']}:"
+    f"{os.environ['MYSQLPORT']}/"
+    f"{os.environ['MYSQLDATABASE']}"
+)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
 db = SQLAlchemy(app)
 
-#MODEL
-
+# MODEL
 class User(db.Model):
     __tablename__ = 'users'
-
     id = db.Column(db.Integer, primary_key=True)
-    birthday = db.Column(db.Date, unique=True, nullable=False)  # Changed from user_id to birthday
+    birthday = db.Column(db.Date, nullable=False)  # removed unique=True
     username = db.Column(db.String(100), unique=True, nullable=False)
     email = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-#ROUTEs
-
+# ROUTES
 @app.route('/')
 def home():
     return render_template('register.html')
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['POST'])
 def register():
-    if request.method == 'GET':
-        return redirect(url_for('home'))
-
     birthday_str = request.form.get('birthday')
     username = request.form.get('username')
     email = request.form.get('email')
@@ -59,23 +59,16 @@ def register():
         flash('Username/Email already exists!', 'error')
         return redirect(url_for('home'))
 
-    # Hash the password before saving
     hashed_password = generate_password_hash(password)
-
-    new_user = User(
-        birthday=birthday,
-        username=username,
-        email=email,
-        password=hashed_password  # Store hashed password
-    )
+    new_user = User(birthday=birthday, username=username, email=email, password=hashed_password)
 
     try:
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('success'))
-    except:
+    except Exception as e:
         db.session.rollback()
-        flash('Database error occurred!', 'error')
+        flash(str(e), 'error')
         return redirect(url_for('home'))
 
 @app.route('/success')
@@ -87,9 +80,8 @@ def users():
     users = User.query.all()
     return render_template('users.html', users=users)
 
-#RUN
-
+# RUN
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))

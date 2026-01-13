@@ -21,10 +21,16 @@ class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     birthday = db.Column(db.Date, nullable=False)
+    age = db.Column(db.Integer, nullable=False)
     username = db.Column(db.String(100), unique=True, nullable=False)
     email = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+def calculate_age(birthday):
+    today = datetime.now().date()
+    age = today.year - birthday.year - ((today.month, today.day) < (birthday.month, birthday.day))
+    return age
 
 @app.route('/')
 def home():
@@ -48,6 +54,8 @@ def register():
         flash('Invalid birthday format!', 'error')
         return redirect(url_for('home'))
 
+    age = calculate_age(birthday)
+
     existing_user = User.query.filter(
         (User.username == username) | (User.email == email)
     ).first()
@@ -57,7 +65,7 @@ def register():
         return redirect(url_for('home'))
 
     hashed_password = generate_password_hash(password)
-    new_user = User(birthday=birthday, username=username, email=email, password=hashed_password)
+    new_user = User(birthday=birthday, age=age, username=username, email=email, password=hashed_password)
 
     try:
         db.session.add(new_user)

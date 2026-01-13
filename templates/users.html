@@ -2,52 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        .content {
-            display: none; /* Initially hidden */
-        }
-
-        .sbx {
-            padding: 30px;
-        }
-        .header1 {
-            margin-bottom: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        a {
-            display: block;
-            margin: 15px 0;
-            padding: 10px;
-            text-align: center;
-        }
-    </style>
-    <script>
-        window.onload = function() {
-            setTimeout(function() {
-                document.querySelector('.content').style.display = 'block';
-            }, 1000);
-        };
-    </script>
 </head>
-
 <body>
 <div class="lbx">
     <div class="sbx content">
-        <h2 class="header1">All Users</h2>
+        <h2 class="header1">📋 All Users</h2>
         <table>
             <thead>
                 <tr>
@@ -66,11 +28,13 @@
                 {% endfor %}
             </tbody>
         </table>
-
         <a href="{{ url_for('home') }}">
             <button class="submit">Back to Register</button>
         </a>
     </div>
+</div>
+<div class="footer">
+    <a href="/">Home</a> | <a href="/users">View Users</a>
 </div>
 </body>
 </html>

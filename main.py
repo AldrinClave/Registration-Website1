@@ -49,7 +49,7 @@ def register():
         return redirect(url_for('home'))
 
     try:
-        birthday = datetime.strptime(birthday_str, '%Y-%m-d').date()
+        birthday = datetime.strptime(birthday_str, '%Y-%m-%d').date()  # Fixed: Added missing 'd'
     except ValueError:
         flash('Invalid birthday format!', 'error')
         return redirect(url_for('home'))

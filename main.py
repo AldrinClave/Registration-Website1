@@ -49,7 +49,7 @@ def register():
         return redirect(url_for('home'))
 
     try:
-        birthday = datetime.strptime(birthday_str, '%Y-%m-%d').date()
+        birthday = datetime.strptime(birthday_str, '%Y-%m-d').date()
     except ValueError:
         flash('Invalid birthday format!', 'error')
         return redirect(url_for('home'))
@@ -83,7 +83,8 @@ def success():
 @app.route('/users')
 def users():
     users = User.query.all()
-    return render_template('users.html', users=users)
+    total_users = User.query.count()
+    return render_template('users.html', users=users, total_users=total_users)
 
 if __name__ == '__main__':
     with app.app_context():

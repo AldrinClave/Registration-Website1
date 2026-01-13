@@ -2,46 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Success</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-
-        .sbx {
-            padding: 30px;
-        }
-        .header1 {
-            margin-bottom: 20px;
-        }
-        .header2 {
-            margin-bottom: 30px;
-        }
-        a {
-            display: block;
-            margin: 15px 0;
-            padding: 10px;
-            text-align: center;
-        }
-        .content {
-            display: none;
-        }
-    </style>
-    <script>
-        window.onload = function() {
-            setTimeout(function() {
-                document.querySelector('.content').style.display = 'block';
-            }, 1000);
-        };
-    </script>
 </head>
 <body>
-
 <div class="lbx">
     <div class="sbx content">
-        <p class="header1">Your account has been created.</p>
-        <a href="/">Go back to registration</a>
-        <a href="/users">View all users</a>
+        <h2 class="header1">🎉 Success!</h2>
+        <div class="checkmark">
+            <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45"></circle>
+                <path d="M25 50 L45 70 L75 30"></path>
+            </svg>
+        </div>
+        <p class="header2">Your account has been created successfully.</p>
+        <a href="/" class="submit" style="display: inline-block; text-align: center; margin: 10px;">Go back to registration</a>
+        <a href="/users" class="submit" style="display: inline-block; text-align: center; margin: 10px;">View all users</a>
     </div>
 </div>
-
+<div class="footer">
+    <a href="/">Home</a> | <a href="/users">View Users</a>
+</div>
 </body>
 </html>

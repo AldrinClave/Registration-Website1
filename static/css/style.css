@@ -5,7 +5,7 @@
 }
 
 body {
-  color: black;
+  color: #333;
   background-image: url("../resources/L.gif");
   background-size: cover;
   background-position: center;
@@ -15,10 +15,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.header1 {
-  text-align: center;
+  flex-direction: column;
 }
 
 .lbx {
@@ -26,67 +23,91 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 17.172px;
+  padding: 20px;
 }
 
 .sbx {
-  padding: 34.344px;
-  border-radius: 12.849px;
+  padding: 40px;
+  border-radius: 15px;
   width: 100%;
-  max-width: 643.125px;
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(2px);
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sbx:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.content {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out 1s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.header1 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #000;
 }
 
 .header2 {
   text-align: center;
-  margin-bottom: 25.758px;
-  font-size: 15px;
-  color: black;
+  margin-bottom: 30px;
+  font-size: 16px;
+  color: #555;
 }
 
 .fg {
-  margin-bottom: 17.172px;
+  margin-bottom: 20px;
 }
 
 label {
   display: block;
-  margin-bottom: 6.8688px;
-  color: black;
-  font-weight: 500;
-  font-size: 15px;
-  text-shadow: none;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 600;
+  font-size: 16px;
 }
 
 input {
   width: 100%;
-  padding: 10.3032px 12.849px;
-  border-radius: 6.8688px;
-  font-size: 15px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 16px;
   transition: all 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  color: black;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: #333;
 }
 
 input:focus {
-  border-color: #000000;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-color: #000;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
   outline: none;
 }
 
 .submit {
   width: 100%;
-  padding: 12.0204px;
-  font-size: 15px;
+  padding: 14px;
+  font-size: 16px;
   cursor: pointer;
-  margin-top: 8.586px;
-  background: linear-gradient(135deg, #000000, #333333);
+  margin-top: 10px;
+  background: linear-gradient(135deg, #000, #444);
   color: white;
   border: none;
-  border-radius: 6.8688px;
+  border-radius: 8px;
   font-weight: bold;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -94,14 +115,89 @@ input:focus {
 }
 
 .submit:hover {
-  background: linear-gradient(135deg, #333333, #000000);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-  transform: scale(1.03);
+  background: linear-gradient(135deg, #444, #000);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transform: scale(1.05);
 }
 
 a {
-  color: #000000;
+  color: #000;
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
 }
+
+a:hover {
+  color: #444;
+}
+
+.flash {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.flash.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.flash.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.checkmark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.checkmark svg {
+  width: 100px;
+  height: 100px;
+}
+
+.checkmark circle {
+  fill: none;
+  stroke: #4CAF50;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  animation: drawCircle 1s ease-in-out forwards;
+}
+
+.checkmark path {
+  fill: none;
+  stroke: #4CAF50;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: drawCheck 0.5s ease-in-out 1s forwards;
+}
+
+@keyframes drawCircle {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes drawCheck {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color:

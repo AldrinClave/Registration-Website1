@@ -7,7 +7,6 @@ from werkzeug.security import generate_password_hash
 app = Flask(__name__)
 app.secret_key = 'Clave'
 
-# DATABASE CONFIG FOR RAILWAY ONLY
 app.config['SQLALCHEMY_DATABASE_URI'] = (
     f"mysql+pymysql://{os.environ['MYSQLUSER']}:"
     f"{os.environ['MYSQLPASSWORD']}@"
@@ -18,17 +17,15 @@ app.config['SQLALCHEMY_DATABASE_URI'] = (
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# MODEL
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    birthday = db.Column(db.Date, nullable=False)  # removed unique=True
+    birthday = db.Column(db.Date, nullable=False)
     username = db.Column(db.String(100), unique=True, nullable=False)
     email = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-# ROUTES
 @app.route('/')
 def home():
     return render_template('register.html')
@@ -80,7 +77,6 @@ def users():
     users = User.query.all()
     return render_template('users.html', users=users)
 
-# RUN
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()

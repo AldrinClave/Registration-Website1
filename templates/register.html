@@ -29,6 +29,7 @@
             <div class="fg">
                 <label for="birthday">Birthday</label>
                 <input type="date" id="birthday" name="birthday" required>
+                <span id="age-display" class="age-display" aria-live="polite">Age: Not calculated yet</span>
             </div>
 
             <div class="fg">
@@ -53,5 +54,35 @@
 <div class="footer">
     <a href="/">Home</a> | <a href="/users">View Users</a>
 </div>
+
+<script>
+    document.getElementById('birthday').addEventListener('change', function() {
+        const birthdayInput = this.value;
+        const ageDisplay = document.getElementById('age-display');
+        
+        if (!birthdayInput) {
+            ageDisplay.textContent = 'Age: Not calculated yet';
+            return;
+        }
+        
+        const birthday = new Date(birthdayInput);
+        const today = new Date();
+        
+        if (birthday > today) {
+            ageDisplay.textContent = 'Invalid birthday';
+            return;
+        }
+        
+        let age = today.getFullYear() - birthday.getFullYear();
+        const monthDiff = today.getMonth() - birthday.getMonth();
+        const dayDiff = today.getDate() - birthday.getDate();
+        
+        if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+            age--;
+        }
+        
+        ageDisplay.textContent = `Age: ${age}`;
+    });
+</script>
 </body>
 </html>

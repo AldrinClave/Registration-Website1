@@ -13,100 +13,88 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
 
 .lbx {
   width: 100%;
+  padding: 20px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 20px;
 }
 
 .sbx {
-  padding: 40px;
+  padding: 30px;
   border-radius: 15px;
   width: 100%;
-  max-width: 600px;
+  max-width: 700px;
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.sbx:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-}
-
-.content {
-  opacity: 0;
-  animation: fadeIn 0.5s ease-in-out 1s forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
 }
 
 .header1 {
   text-align: center;
   font-size: 28px;
-  font-weight: bold;
   margin-bottom: 10px;
-  color: #000;
 }
 
-.header2 {
+.total-users-counter {
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 16px;
-  color: #555;
-}
-
-.fg {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  color: #333;
-  font-weight: 600;
-  font-size: 16px;
-}
-
-input {
-  width: 100%;
-  padding: 12px 15px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  background: rgba(0,0,0,0.08);
+  padding: 10px;
   border-radius: 8px;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  color: #333;
 }
 
-input:focus {
-  border-color: #000;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
-  outline: none;
+/* TABLE FIX (mobile friendly) */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #f2f2f2;
 }
 
 .submit {
   width: 100%;
   padding: 14px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 10px;
+  margin-top: 15px;
   background: linear-gradient(135deg, #000, #444);
-  color: white;
+  color: #fff;
   border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.submit:hover {
+  transform: scale(1.03);
+}
+
+/* FOOTER FIX */
+.footer {
+  margin-top: 20px;
+  color: white;
+}
+
+.footer a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}  border: none;
   border-radius: 8px;
   font-weight: bold;
   letter-spacing: 1px;
@@ -227,3 +215,4 @@ table th {
   padding: 10px;
   border-radius: 8px;
 }
+

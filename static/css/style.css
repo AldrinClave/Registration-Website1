@@ -1,229 +1,254 @@
-{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
+/* ===== BODY ===== */
 body {
-color: #333;
-background-image: url("../resources/L.gif");
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-min-height: 100vh;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
+  color: #333;
+  background-image: url("../resources/L.gif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
+/* ===== LAYOUT BOXES ===== */
 .lbx {
-width: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-padding: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 .sbx {
-padding: 40px;
-border-radius: 15px;
-width: 100%;
-max-width: 600px;
-background-color: rgba(255, 255, 255, 0.95);
-box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-backdrop-filter: blur(10px);
-border: 1px solid rgba(0, 0, 0, 0.1);
-transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 40px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .sbx:hover {
-transform: translateY(-5px);
-box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
+/* ===== ANIMATION ===== */
 .content {
-opacity: 0;
-animation: fadeIn 0.5s ease-in-out 1s forwards;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out 1s forwards;
 }
 
 @keyframes fadeIn {
-to {
-opacity: 1;
-}
+  to {
+    opacity: 1;
+  }
 }
 
+/* ===== HEADERS ===== */
 .header1 {
-text-align: center;
-font-size: 28px;
-font-weight: bold;
-margin-bottom: 10px;
-color: #000;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #000;
 }
 
 .header2 {
-text-align: center;
-margin-bottom: 30px;
-font-size: 16px;
-color: #555;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 16px;
+  color: #555;
 }
 
+/* ===== FORM GROUP ===== */
 .fg {
-margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
+/* ===== LABEL ===== */
 label {
-display: block;
-margin-bottom: 8px;
-color: #333;
-font-weight: 600;
-font-size: 16px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
 }
 
+/* ===== INPUT (CENTERED) ===== */
 input {
-width: 100%;
-padding: 12px 15px;
-border-radius: 8px;
-font-size: 16px;
-transition: all 0.3s ease;
-background-color: rgba(255, 255, 255, 0.9);
-border: 1px solid rgba(0, 0, 0, 0.2);
-color: #333;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
+
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: #333;
 }
 
 input:focus {
-border-color: #000;
-box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
-outline: none;
+  border-color: #000;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+  outline: none;
 }
 
+/* ===== BUTTON ===== */
 .submit {
-width: 100%;
-padding: 14px;
-font-size: 16px;
-cursor: pointer;
-margin-top: 10px;
-background: linear-gradient(135deg, #000, #444);
-color: white;
-border: none;
-border-radius: 8px;
-font-weight: bold;
-letter-spacing: 1px;
-text-transform: uppercase;
-transition: all 0.3s ease;
+  width: 100%;
+  max-width: 400px;
+  margin: 15px auto 0 auto;
+  display: block;
+
+  padding: 14px;
+  font-size: 16px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #000, #444);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
 }
 
 .submit:hover {
-background: linear-gradient(135deg, #444, #000);
-box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-transform: scale(1.05);
+  background: linear-gradient(135deg, #444, #000);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transform: scale(1.05);
 }
 
+/* ===== LINKS ===== */
 a {
-color: #000;
-text-decoration: none;
-font-weight: 600;
-transition: color 0.3s ease;
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 a:hover {
-color: #444;
+  color: #444;
 }
 
+/* ===== FLASH MESSAGES ===== */
 .flash {
-padding: 10px;
-margin-bottom: 20px;
-border-radius: 5px;
-text-align: center;
-font-weight: bold;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .flash.error {
-background-color: #f8d7da;
-color: #721c24;
-border: 1px solid #f5c6cb;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }
 
 .flash.success {
-background-color: #d4edda;
-color: #155724;
-border: 1px solid #c3e6cb;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
 }
 
+/* ===== CHECKMARK ===== */
 .checkmark {
-display: flex;
-justify-content: center;
-align-items: center;
-margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
 }
 
 .checkmark svg {
-width: 100px;
-height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 .checkmark circle {
-fill: none;
-stroke: #4CAF50;
-stroke-width: 4;
-stroke-linecap: round;
-stroke-dasharray: 283;
-stroke-dashoffset: 283;
-animation: drawCircle 1s ease-in-out forwards;
+  fill: none;
+  stroke: #4CAF50;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  animation: drawCircle 1s ease-in-out forwards;
 }
 
 .checkmark path {
-fill: none;
-stroke: #4CAF50;
-stroke-width: 4;
-stroke-linecap: round;
-stroke-linejoin: round;
-stroke-dasharray: 100;
-stroke-dashoffset: 100;
-animation: drawCheck 0.5s ease-in-out 1s forwards;
+  fill: none;
+  stroke: #4CAF50;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: drawCheck 0.5s ease-in-out 1s forwards;
 }
 
 @keyframes drawCircle {
-to {
-stroke-dashoffset: 0;
-}
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 @keyframes drawCheck {
-to {
-stroke-dashoffset: 0;
-}
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
+/* ===== TABLE ===== */
 table {
-width: 100%;
-border-collapse: collapse;
-margin-bottom: 20px;
-background-color: rgba(255, 255, 255, 0.9);
-border-radius: 8px;
-overflow: hidden;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-table th, table td {
-padding: 12px;
-text-align: left;
-border-bottom: 1px solid #ddd;
+table th,
+table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
 table th {
-background-color: #f2f2f2;
-font-weight: bold;
+  background-color: #f2f2f2;
+  font-weight: bold;
 }
 
+/* ===== TOTAL USERS ===== */
 .total-users-counter {
-text-align: center;
-margin-bottom: 20px;
-font-size: 18px;
-font-weight: bold;
-color: #000;
-background-color: rgba(0, 0, 0, 0.1);
-padding: 10px;
-border-radius: 8px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+}

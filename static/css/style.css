@@ -3,7 +3,10 @@ margin: 0;
 padding: 0;
 box-sizing: border-box;
 }
-
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;   /* stops overlap */
+}
 
 body {
 color: #333;
@@ -229,3 +232,4 @@ padding: 10px;
 border-radius: 8px;
 
 }
+
